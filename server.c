@@ -6,7 +6,7 @@
 /*   By: bschwitz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:24:28 by bschwitz          #+#    #+#             */
-/*   Updated: 2022/02/15 17:40:47 by bschwitz         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:23:55 by bschwitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	reception(int sig)
 {
 	static size_t	i;
 	static int		bit;
-	static char		buf[10000];
+	static char		buf[1000000];
 
 	if (--bit == -1)
 	{
@@ -42,20 +42,14 @@ static void	reception(int sig)
 		buf[i] |= (1 << bit);
 	else if (sig == SIGUSR2)
 		buf[i] &= ~(1 << bit);
-	if (i == 9999 || buf[i] == 127)
+	if (i == 999999 || buf[i] == 127)
 	{
 		buf[i] = 0;
 		write(STDOUT_FILENO, buf, i + 1);
-		ft_memset(buf, '\0', 9999);
+		ft_memset(buf, '\0', 999999);
 		i = 0;
 		bit = 0;
 	}
-}
-
-static void	close_server(int sig)
-{
-	sig = 2;
-	g_server_on = 0;
 }
 
 int	main(int argc, char **argv)
@@ -63,7 +57,7 @@ int	main(int argc, char **argv)
 	argv = NULL;
 	if (argc != 1)
 	{
-		write (STDERR_FILENO, "Executer uniquement ./server.\n", 30);
+		write (STDERR_FILENO, "Executez uniquement ./server.\n", 31);
 		return (1);
 	}
 	else
@@ -71,7 +65,6 @@ int	main(int argc, char **argv)
 		print_pid();
 		signal(SIGUSR1, reception);
 		signal(SIGUSR2, reception);
-		signal(SIGINT, close_server);
 		while (g_server_on)
 		{
 		}

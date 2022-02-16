@@ -6,7 +6,7 @@
 #    By: bschwitz <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 14:31:51 by bschwitz          #+#    #+#              #
-#    Updated: 2022/02/15 16:41:03 by bschwitz         ###   ########.fr        #
+#    Updated: 2022/02/16 17:01:47 by bschwitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ OBJS		= ${SRCS:.c=.o}
 
 CC			= gcc
 
-INC			= libft_utils.c
+UTILS		= libft_utils.c
 
 CFLAGS		= -Wall -Werror -Wextra
 
 ${NAME}:	${OBJS}
 	@ar -rc ${NAME} ${OBJS}
 	@ranlib ${NAME}
-	${CC} ${CFLAGS} -fsanitize=address server.c ${INC} -o server
-	${CC} ${CFLAGS} -fsanitize=address client.c ${INC} -o client
+	${CC} ${CFLAGS} -fsanitize=address server.c ${UTILS} -o server
+	${CC} ${CFLAGS} -fsanitize=address client.c ${UTILS} -o client
 
 all:	${NAME}
 

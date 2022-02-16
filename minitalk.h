@@ -6,13 +6,14 @@
 /*   By: bschwitz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:38:55 by bschwitz          #+#    #+#             */
-/*   Updated: 2022/02/15 17:22:09 by bschwitz         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:50:10 by bschwitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
+# include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
 # include <stddef.h>
