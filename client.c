@@ -6,7 +6,7 @@
 /*   By: bschwitz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:19:27 by bschwitz          #+#    #+#             */
-/*   Updated: 2022/02/17 16:02:16 by bschwitz         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:06:30 by bschwitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	send_bin(pid_t pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep (10);
+		usleep (100);
 	}
 	return (0);
 }
@@ -44,7 +44,7 @@ static int	ftp_server(pid_t pid_num, char *str)
 	{
 		kill(pid_num, SIGUSR1);
 		i++;
-		usleep(10);
+		usleep(100);
 	}
 	return (0);
 }
