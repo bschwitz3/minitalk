@@ -1,4 +1,5 @@
 # minitalk
+february 2022,
 
 **Minitalk: Signaling Data Exchange! 📡**
 
